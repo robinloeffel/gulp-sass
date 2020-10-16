@@ -1,0 +1,9 @@
+@import 'not-a-separate-file';
+
+body {
+  margin: 0;
+
+  &.is-yellow {
+    background-color: yellow;
+  }
+}
