@@ -1,7 +1,7 @@
 {
   "name": "@rbnlffl/gulp-sass",
-  "version": "1.0.0",
-  "description": "Lightweight gulp wrapper around dart-sass 🏄🏼‍♂️",
+  "version": "0.1.0",
+  "description": "Lightweight gulp wrapper around sass 🏄🏼‍♂️",
   "main": "source/index.js",
   "types": "types/index.d.ts",
   "repository": "https://github.com/robinloeffel/gulp-sass.git",
@@ -38,6 +38,7 @@
     "vinyl": "^2.2.1"
   },
   "peerDependencies": {
+    "gulp": "^4.0.2",
     "sass": "^1.27.0"
   }
 }

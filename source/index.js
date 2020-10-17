@@ -11,52 +11,47 @@ module.exports = (options = {}) => {
   });
 
   stream._transform = (file, _encoding, done) => {
-    let sassOptions = {
+    const sassOptions = {
       file: file.path,
+      ...file.sourceMap && {
+        sourceMap: file.relative.replace(file.extname, '.css'),
+        omitSourceMapUrl: true,
+        sourceMapContents: true
+      },
       ...options
     };
 
     if (file.isNull()) {
-      return done(undefined, file);
+      return done(null, file);
     }
 
     if (file.isStream()) {
-      stream.emit('error', new PluginError(pluginName, 'Streams are not supported!'));
+      return stream.emit('error', new PluginError(pluginName, 'Streams are not supported!'));
     }
 
     if (file.basename.startsWith('_')) {
       return done();
     }
 
-    if (file.sourceMap) {
-      sassOptions = {
-        sourceMap: file.relative.replace(file.extname, '.css.map'),
-        ...sassOptions
-      };
-    }
-
     try {
       const result = sass.renderSync(sassOptions);
+
       const cssFile = new Vinyl({
         cwd: file.cwd,
         base: file.base,
         path: file.path.replace(file.extname, '.css'),
-        contents: result.css
-      });
-      const mapFile = new Vinyl({
-        cwd: file.cwd,
-        base: file.base,
-        path: file.path.replace(file.extname, '.map.css'),
-        contents: result.map
+        contents: result.css,
+        ...file.sourceMap && {
+          sourceMap: JSON.parse(result.map.toString())
+        }
       });
 
       stream.push(cssFile);
-      stream.push(mapFile);
-
-      return done();
     } catch (renderError) {
       stream.emit('error', new PluginError(pluginName, renderError));
     }
+
+    return done();
   };
 
   return stream;
