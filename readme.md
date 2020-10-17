@@ -5,7 +5,7 @@
 [![required node version](https://img.shields.io/node/v/@rbnlffl/gulp-sass)](https://github.com/nodejs/Release)
 [![dependency status](https://img.shields.io/david/robinloeffel/gulp-sass)](https://david-dm.org/robinloeffel/gulp-sass)
 [![gulp peer dep](https://img.shields.io/npm/dependency-version/@rbnlffl/gulp-sass/peer/gulp?label=gulp%20peer%20dep)](https://github.com/gulpjs/gulp)
-[![sass peer dep](https://img.shields.io/npm/dependency-version/@rbnlffl/gulp-sass/peer/sass?label=sass%20peer%20dep)](https://github.com/sass/dart-sass)
+[![sass dep](https://img.shields.io/npm/dependency-version/@rbnlffl/gulp-sass/sass?label=sass%20dep)](https://github.com/sass/dart-sass)
 [![package license](https://img.shields.io/npm/l/@rbnlffl/gulp-sass)](license)
 
 > Lightweight [`gulp`](https://github.com/gulpjs/gulp) wrapper around [`sass`](https://github.com/sass/dart-sass) 🏄🏼‍♂️
