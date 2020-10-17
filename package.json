@@ -21,7 +21,8 @@
     "node": ">=10"
   },
   "files": [
-    "source"
+    "source",
+    "types"
   ],
   "publishConfig": {
     "access": "public"
