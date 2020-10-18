@@ -1,5 +1,4 @@
 const { Transform } = require('stream');
-const Vinyl = require('vinyl');
 const PluginError = require('plugin-error');
 const sass = require('sass');
 
@@ -36,22 +35,17 @@ module.exports = (options = {}) => {
     try {
       const result = sass.renderSync(sassOptions);
 
-      const cssFile = new Vinyl({
-        cwd: file.cwd,
-        base: file.base,
-        path: file.path.replace(file.extname, '.css'),
-        contents: result.css,
-        ...file.sourceMap && {
-          sourceMap: JSON.parse(result.map.toString())
-        }
-      });
+      file.path = file.path.replace(file.extname, '.css');
+      file.contents = result.css;
 
-      stream.push(cssFile);
+      if (file.sourceMap) {
+        file.sourceMap = JSON.parse(result.map.toString());
+      }
+
+      return done(null, file);
     } catch (renderError) {
-      stream.emit('error', new PluginError(pluginName, renderError));
+      return stream.emit('error', new PluginError(pluginName, renderError));
     }
-
-    return done();
   };
 
   return stream;

@@ -1,6 +1,6 @@
 {
   "name": "@rbnlffl/gulp-sass",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight gulp wrapper around sass 🏄🏼‍♂️",
   "main": "source/index.js",
   "types": "types/index.d.ts",
@@ -28,12 +28,11 @@
     "access": "public"
   },
   "scripts": {
-    "start": "onchange 'source/index.js' -- gulp -f test/gulpfile.js"
+    "start": "onchange -i 'source/index.js' -- gulp -f test/gulpfile.js"
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "sass": "^1.27.0",
-    "vinyl": "^2.2.1"
+    "sass": "^1.27.0"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
