@@ -1,5 +1,6 @@
 const { Transform } = require('stream');
 const PluginError = require('plugin-error');
+const applySourceMap = require('vinyl-sourcemaps-apply');
 const sass = require('sass');
 
 const pluginName = '@rbnlffl/gulp-sass';
@@ -39,7 +40,7 @@ module.exports = (options = {}) => {
       file.contents = result.css;
 
       if (file.sourceMap) {
-        file.sourceMap = JSON.parse(result.map.toString());
+        applySourceMap(file, result.map.toString());
       }
 
       return done(null, file);

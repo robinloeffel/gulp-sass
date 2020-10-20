@@ -1,7 +1,7 @@
 {
   "name": "@rbnlffl/gulp-sass",
   "version": "0.1.1",
-  "description": "Lightweight gulp wrapper around sass 🏄🏼‍♂️",
+  "description": "Lightweight gulp wrapper around sass. 🏄🏼‍♂️",
   "main": "source/index.js",
   "types": "types/index.d.ts",
   "repository": "https://github.com/robinloeffel/gulp-sass.git",
@@ -32,7 +32,8 @@
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "sass": "^1.27.0"
+    "sass": "^1.27.0",
+    "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
