@@ -36,10 +36,10 @@
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-sweet": "^2.0.1",
     "gulp": "^4.0.2",
-    "onchange": "^7.0.2"
+    "onchange": "^7.1.0"
   },
   "peerDependencies": {
     "gulp": "^4.0.2"
