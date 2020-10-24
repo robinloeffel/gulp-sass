@@ -8,7 +8,7 @@
 [![sass dep](https://img.shields.io/npm/dependency-version/@rbnlffl/gulp-sass/sass?label=sass%20dep)](https://github.com/sass/dart-sass)
 [![package license](https://img.shields.io/npm/l/@rbnlffl/gulp-sass)](license)
 
-> Lightweight [`gulp`](https://github.com/gulpjs/gulp) wrapper around [`sass`](https://github.com/sass/dart-sass) 🏄🏼‍♂️
+> Lightweight [`gulp`](https://github.com/gulpjs/gulp) wrapper around [`sass`](https://github.com/sass/dart-sass). 🏄🏼‍♂️
 
 Nicely integrates the most recent version of [`sass`](https://github.com/sass/dart-sass) (`dart-sass`) into a [`gulp`](https://github.com/gulpjs/gulp) plugin.
 
@@ -30,7 +30,7 @@ gulp.task('css', () => {
 
 ## Config
 
-The plugin takes an options object and passes it directly to `sass`. You can see a full documentation of what props are available [here](https://sass-lang.com/documentation/js-api#options). Mind you that directly manipulatiing options regarding the file input and sourcemaps output is strongly discouraged, as this gets handled by the plugin itself. Below you'll find the most common options.
+The plugin takes an options object and passes it directly to `sass`. You can see a full documentation of what props are available [here](https://sass-lang.com/documentation/js-api#options). Mind you that directly manipulating options regarding the file input and sourcemaps output is strongly discouraged, as this gets handled by the plugin itself. Below you'll find the most common options.
 
 ### `includePaths`
 
