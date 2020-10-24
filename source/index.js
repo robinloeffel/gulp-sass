@@ -1,4 +1,5 @@
 const { Transform } = require('stream');
+const path = require('path');
 const PluginError = require('plugin-error');
 const applySourceMap = require('vinyl-sourcemaps-apply');
 const sass = require('sass');
@@ -14,7 +15,7 @@ module.exports = (options = {}) => {
     const sassOptions = {
       file: file.path,
       ...file.sourceMap && {
-        sourceMap: file.relative.replace(file.extname, '.css'),
+        sourceMap: file.path,
         omitSourceMapUrl: true,
         sourceMapContents: true
       },
@@ -36,12 +37,17 @@ module.exports = (options = {}) => {
     try {
       const result = sass.renderSync(sassOptions);
 
-      file.path = file.path.replace(file.extname, '.css');
-      file.contents = result.css;
+      if (file.sourceMap && result.map) {
+        const resultMap = JSON.parse(result.map.toString());
 
-      if (file.sourceMap) {
-        applySourceMap(file, result.map.toString());
+        // remove the path portion of the string since
+        // applySourceMap expects only the file name
+        resultMap.file = path.basename(resultMap.file);
+        applySourceMap(file, resultMap);
       }
+
+      file.contents = result.css;
+      file.path = file.path.replace(file.extname, '.css');
 
       return done(null, file);
     } catch (renderError) {
