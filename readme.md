@@ -19,13 +19,14 @@ yarn add @rbnlffl/gulp-sass --dev
 ```
 
 ```js
+const { src, dest } = require('gulp');
 const sass = require('@rbnlffl/gulp-sass');
 
-gulp.task('css', () => {
-  return gulp.src('source/css/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('dist'));
-});
+const css = () => src('source/css/*.scss')
+  .pipe(sass())
+  .pipe(dest('public/css'));
+
+module.exports.css = css;
 ```
 
 ## Config
