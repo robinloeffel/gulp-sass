@@ -36,9 +36,7 @@ module.exports = (options = {}) => new Transform({
 
       if (file.sourceMap && result.map) {
         const resultMap = JSON.parse(result.map.toString());
-
-        // remove the path portion of the string since
-        // applySourceMap expects only the file name
+        resultMap.file = resultMap.file.replace('file://', '');
         resultMap.file = path.basename(resultMap.file);
         applySourceMap(file, resultMap);
       }
@@ -50,7 +48,6 @@ module.exports = (options = {}) => new Transform({
     } catch (renderError) {
       return this.emit('error', new PluginError(pluginName, renderError));
     }
-  };
+  }
+});
 
-  return stream;
-};
