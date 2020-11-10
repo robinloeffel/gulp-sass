@@ -47,7 +47,7 @@ module.exports = (options = {}) => {
       }
 
       file.contents = result.css;
-      file.path = file.path.replace(file.extname, '.css');
+      file.extname = '.css';
 
       return done(null, file);
     } catch (renderError) {
