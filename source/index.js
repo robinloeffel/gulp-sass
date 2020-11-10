@@ -6,12 +6,9 @@ const sass = require('sass');
 
 const pluginName = '@rbnlffl/gulp-sass';
 
-module.exports = (options = {}) => {
-  const stream = new Transform({
-    objectMode: true
-  });
-
-  stream._transform = (file, _encoding, done) => {
+module.exports = (options = {}) => new Transform({
+  objectMode: true,
+  transform(file, _encoding, done) {
     const sassOptions = {
       file: file.path,
       ...file.sourceMap && {
@@ -27,7 +24,7 @@ module.exports = (options = {}) => {
     }
 
     if (file.isStream()) {
-      return stream.emit('error', new PluginError(pluginName, 'Streams are not supported!'));
+      return this.emit('error', new PluginError(pluginName, 'Streams are not supported!'));
     }
 
     if (file.basename.startsWith('_')) {
@@ -51,7 +48,7 @@ module.exports = (options = {}) => {
 
       return done(null, file);
     } catch (renderError) {
-      return stream.emit('error', new PluginError(pluginName, renderError));
+      return this.emit('error', new PluginError(pluginName, renderError));
     }
   };
 
