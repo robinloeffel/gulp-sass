@@ -1,6 +1,6 @@
 {
   "name": "@rbnlffl/gulp-sass",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Lightweight gulp wrapper around sass. 🏄🏼‍♂️",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
