@@ -1,3 +1,11 @@
+# v0.2.0
+_2023-09-09_
+
+* move to `typescript`
+* make `sass` a peer dependency
+* update `node` in `engines` to `>=14`
+* handle source maps directly
+
 # v0.1.2
 _2020-11-10_
 
