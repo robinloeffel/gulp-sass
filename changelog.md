@@ -1,3 +1,8 @@
+# v0.2.1
+_2023-09-09_
+
+* fix `vinyl-sourcemaps-apply` compatibility
+
 # v0.2.0
 _2023-09-09_
 

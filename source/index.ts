@@ -34,7 +34,10 @@ export = (options: Options<"sync">) => new Transform({
       file.extname = ".css";
 
       if (Boolean(file.sourceMap) && Boolean(result.sourceMap)) {
-        file.sourceMap = result.sourceMap;
+        file.sourceMap = {
+          file: file.relative,
+          ...result.sourceMap
+        };
       }
 
       return done(null, file);
