@@ -11,7 +11,7 @@
 ## How
 
 ```sh
-yarn add @rbnlffl/gulp-sass sass --dev
+npm i -D @rbnlffl/gulp-sass sass
 ```
 
 ```js
@@ -27,7 +27,7 @@ module.exports.css = css;
 
 ## Config
 
-The plugin takes an options object and passes it directly to `sass`. You can see a full documentation of what props are available [here](https://sass-lang.com/documentation/js-api#options). Mind you that directly manipulating options regarding the file input and sourcemaps output is strongly discouraged, as this gets handled by the plugin itself. Below you'll find the most common options.
+The plugin takes an options object and passes it directly to `sass`. You can see a full documentation of what props are available [here](https://sass-lang.com/documentation/js-api/interfaces/options/). Mind you that directly manipulating options regarding the file input and sourcemaps output is strongly discouraged, as this gets handled by the plugin itself. Below you'll find the most common options.
 
 ### `includePaths`
 

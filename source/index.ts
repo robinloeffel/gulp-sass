@@ -4,7 +4,7 @@ import { Buffer } from "node:buffer";
 import { type BufferFile } from "vinyl";
 import { compile, type Options } from "sass";
 
-export = (options: Options<"sync">) => new Transform({
+export = (options?: Options<"sync">) => new Transform({
   objectMode: true,
   transform: (file: BufferFile, _encoding, done) => {
     const sassOptions: Options<"sync"> = {

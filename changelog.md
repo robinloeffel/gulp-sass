@@ -1,3 +1,8 @@
+# v0.2.2
+_2024-02-25_
+
+* fix options not marked as optional
+
 # v0.2.1
 _2023-09-09_
 
