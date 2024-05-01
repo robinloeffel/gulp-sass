@@ -1,5 +1,5 @@
-const gulp = require("gulp");
-const sass = require("../dist");
+import gulp from "gulp";
+import sass from "../dist/index.js";
 
 gulp.task("default", () => gulp.src("fixtures/*.scss", {
     sourcemaps: true

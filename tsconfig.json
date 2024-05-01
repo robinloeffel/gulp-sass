@@ -1,15 +1,14 @@
 {
+  "extends": "@tsconfig/strictest",
   "compilerOptions": {
     "target": "esnext",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "strict": true,
-    "isolatedModules": true,
-    "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true,
+    "module": "preserve",
     "moduleDetection": "force",
+    "noPropertyAccessFromIndexSignature": false,
     "declaration": true,
     "outDir": "dist"
   },
-  "include": ["source"]
+  "include": [
+    "source"
+  ]
 }

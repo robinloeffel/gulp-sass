@@ -1,10 +1,9 @@
-import { Transform } from "node:stream";
 import { Buffer } from "node:buffer";
-
-import { type BufferFile } from "vinyl";
+import { Transform } from "node:stream";
 import { compile, type Options } from "sass";
+import type { BufferFile } from "vinyl";
 
-export = (options?: Options<"sync">) => new Transform({
+const plugin = (options?: Options<"sync">) => new Transform({
   objectMode: true,
   transform: (file: BufferFile, _encoding, done) => {
     const sassOptions: Options<"sync"> = {
@@ -16,15 +15,18 @@ export = (options?: Options<"sync">) => new Transform({
     };
 
     if (file.isNull()) {
-      return done(null, file);
+      done(null, file);
+      return;
     }
 
     if (file.isStream()) {
-      return done(new Error("Streams are not supported!"), file);
+      done(new Error("Streams are not supported!"), file);
+      return;
     }
 
     if (file.basename.startsWith("_")) {
-      return done();
+      done();
+      return;
     }
 
     try {
@@ -40,9 +42,11 @@ export = (options?: Options<"sync">) => new Transform({
         };
       }
 
-      return done(null, file);
+      done(null, file);
     } catch {
-      return done(new Error("Sass compilation failed!"), file);
+      done(new Error("Sass compilation failed!"), file);
     }
   }
 });
+
+export default plugin;

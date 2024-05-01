@@ -1,46 +1,44 @@
 {
   "name": "@rbnlffl/gulp-sass",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Lightweight gulp wrapper around sass. 🏄🏼‍♂️",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": "https://github.com/robinloeffel/gulp-sass.git",
-  "homepage": "https://github.com/robinloeffel/gulp-sass",
-  "bugs": "https://github.com/robinloeffel/gulp-sass/issues",
-  "author": "Robin Löffel <hi@robinloeffel.ch> (https://robinloeffel.ch)",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=14"
-  },
   "keywords": [
     "gulpplugin",
     "sass",
     "scss",
     "css"
   ],
+  "homepage": "https://github.com/robinloeffel/gulp-sass",
+  "bugs": "https://github.com/robinloeffel/gulp-sass/issues",
+  "repository": "https://github.com/robinloeffel/gulp-sass.git",
+  "license": "MIT",
+  "author": "Robin Löffel <hi@robinloeffel.ch> (https://robinloeffel.ch)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "source",
     "dist"
   ],
+  "scripts": {
+    "prepack": "rm -rf dist && tsc",
+    "start": "chokidar source/index.ts -c 'tsc && gulp -f test/gulpfile.js'"
+  },
   "devDependencies": {
-    "@types/vinyl": "^2.0.11",
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/vinyl": "^2.0.12",
     "chokidar-cli": "^3.0.0",
     "eslint": "^8.57.0",
-    "eslint-config-sweet": "^18.0.0",
+    "eslint-config-sweet": "^20.0.0",
     "eslint-define-config": "^2.1.0",
-    "gulp": "^4.0.2",
-    "sass": "^1.71.1",
-    "typescript": "^5.3.3"
+    "gulp": "^5.0.0",
+    "sass": "^1.75.0",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "gulp": "^4",
+    "gulp": "^4 || ^5",
     "sass": "^1"
   },
-  "scripts": {
-    "start": "chokidar source/index.ts -c 'tsc && gulp -f test/gulpfile.cjs'",
-    "prepublishOnly": "rm -rf dist && tsc"
+  "publishConfig": {
+    "access": "public"
   }
 }
